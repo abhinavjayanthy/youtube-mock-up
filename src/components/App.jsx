@@ -12,12 +12,19 @@ class App extends React.Component {
         q: term
       }
     });
-    this.setState({ videos: reponse.data.items });
+    this.setState({
+      videos: reponse.data.items,
+      selectedVideo: reponse.data.items[0]
+    });
   };
 
   onVideoSelect = video => {
     this.setState({ selectedVideo: video });
   };
+
+  componentDidMount() {
+    this.onTermSubmit("buildings");
+  }
 
   render() {
     return (
